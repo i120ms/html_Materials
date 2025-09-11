@@ -88,5 +88,26 @@
             22
         </td>
     </table>
+
+<!-- rowspan : an attribute of the <td> (table data) or <th> (table header) elements that specifies the number of rows the cell should span -->
+    <!-- colspan : specifies the number of columns a cell should span -->
+    <table border cellpadding = 50>
+        <tr>
+            <td rowspan = 2>
+                1
+            </td>
+            <td>
+                2
+            </td>
+        </tr>
+        <td>
+            11
+        </td>
+        <td>
+            22
+        </td>
+
+
+    </table>
 </body>
 </html>
