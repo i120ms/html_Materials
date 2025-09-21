@@ -3,4 +3,4 @@
 </h1>
 
 ### Foldery
-1. [znaczniki body](./znaczniki-body)
+1. [znaczniki body](./znaczniki_body)
