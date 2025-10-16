@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        let sec = 0;
+        let min = 0;
+        let h = 0;
+
+        function stoper(){
+            let w = document.getElementById("wyjscie");
+            if(sec == 60){
+                sec = 0;
+                min++;
+            }
+            if(min == 60){
+                min = 0;
+                h++;
+            }
+            w.innerHTML = h + ":" + min + ":" + sec;
+            sec++;
+        }
+    </script>
+</head>
+<body>
+    <input type = "button" onclick = "timerID = setInterval('stoper()', 1)" value = "START">
+    <input type = "button" onclick = "clearInterval(timerID)" value = "STOP"><br><br>
+    <div id = "wyjscie">0</div>
+</body>
+</html>
