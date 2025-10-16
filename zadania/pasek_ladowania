@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasek Ładowania</title>
+
+    <script>
+        let wi = 0
+
+        function progressBar(){
+            let w = document.getElementById("progress");
+            w.style.backgroundColor = "red";
+            w.style.width = wi + '%';
+            w.innerHTML = wi + '%';
+
+            if(wi < 100) wi++;
+        }
+    </script>
+    <style>
+        #progress{
+            width: 0%;
+            height: 50px;
+            color: white;
+        }
+    </style>
+</head>
+<body onload = "setInterval('progressBar()',10)">
+    <div id = "progress">0</div>
+</body>
+</html>
