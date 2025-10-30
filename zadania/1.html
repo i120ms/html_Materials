@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #f1 > button{
+            height: 100px;
+            width: 100px;
+        }
+        #f1 > input{
+            height: 120px;
+            width: 404px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+    function procent(){
+        var liczba = parseFloat(document.getElementById("liczba").value);
+        var procent = parseFloat(document.getElementById("procent").value);
+        var wynik = (liczba * procent) / 100;
+    document.getElementById("wynik").innerHTML = wynik;
+    }
+</script>
+    <br>
+    <form name="f1" id="f1">
+        <input type="text" name="w1"><br>
+
+        <button type="button" name="procent" onclick="f1.w1.value += ''">%</button>
+        <button type="button" name="ce" onclick="f1.w1.value += ''">CE</button>
+        <button type="button" name="c" onclick="f1.w1.value += ''">C</button>
+        <button type="button" name="del" onclick="f1.w1.value += ''">del</button><br>
+
+        <button type="button" name="o1" onclick="f1.w1.value += '1'">1</button>
+        <button type="button" name="o2" onclick="f1.w1.value += '2'">2</button>
+        <button type="button" name="o3" onclick="f1.w1.value += '3'">3</button>
+        <button type="button" name="razy" onclick="f1.w1.value += '*'">*</button><br>
+        <button type="button" name="o4" onclick="f1.w1.value += '4'">4</button>
+        <button type="button" name="o5" onclick="f1.w1.value += '5'">5</button>
+        <button type="button" name="o6" onclick="f1.w1.value += '6'">6</button>
+        <button type="button" name="minus" onclick="f1.w1.value += '-'">-</button><br>
+        <button type="button" name="o7" onclick="f1.w1.value += '7'">7</button>
+        <button type="button" name="o8" onclick="f1.w1.value += '8'">8</button>
+        <button type="button" name="o9" onclick="f1.w1.value += '9'">9</button>
+        <button type="button" name="plus" onclick="f1.w1.value += '+'">+</button><br>
+        <button type="button" name="plus/minus" onclick="f1.w1.value = eval(f1.w1.value)*-1">+/-</button>
+        <button type="button" name="o0" onclick="f1.w1.value += '0'">0</button>
+        <button type="button" name="kropka" onclick="f1.w1.value += '.'">.</button>
+        <button type="button" name="podzielic" onclick="f1.w1.value += '/'">/</button><br>
+        <!--
+        <button type="button" name="potega" onclick="f1.w1.value += '**'">**</button>
+        <button type="button" name="lewynawias" onclick="f1.w1.value += '('">(</button>
+        <button type="button" name="prawynawias" onclick="f1.w1.value += ')'">)</button><br> 
+        -->
+        <button type="button" name="x2" onclick="f1.w1.value += ''">x<sup>2</sup></button>
+        <button type="button" name="x3" onclick="f1.w1.value += ''">x<sup>3</sup></button>
+        <button type="button" name="pierwiastek" onclick="f1.w1.value += '√'">√</button>
+        <button type="button" name="wylicz"  style="background-color: rgb(98, 203, 255);" onclick="f1.w1.value = eval(f1.w1.value)">=</button>
+    </form>
+</body>
+</html>
