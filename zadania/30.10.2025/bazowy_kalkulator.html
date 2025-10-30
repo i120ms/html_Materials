@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!--zadanie 2 - bazowy kalkulator-->
+    <br>
+    <form name="f1">
+        <input type="text" name="w1"><br>
+        <input type="button" name="b3" value="3" onclick="f1.w1.value += '3'">
+        <button type="button" name="b5" onclick="f1.w1.value += '5'">5</button><br>
+        <input type="button" name="plus" value="+" onclick="f1.w1.value += '+'">
+        <input type="button" name="wylicz" value="=" onclick="f1.w1.value = eval(f1.w1.value)">
+    </form>
+</body>
+</html>
