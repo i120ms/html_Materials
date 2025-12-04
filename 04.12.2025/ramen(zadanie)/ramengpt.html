@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restauracja</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Arial, sans-serif;
+        }
+
+        #naglowek{
+            text-align: center;
+            background-color: cornflowerblue;
+            padding: 20px;
+            font-size: 32px;
+            color: white;
+            width: 100%;
+        }
+
+        /* kontener dwóch kolumn */
+        #container{
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        #lewy{
+            background-color: #ddd;
+            width: 50%;
+            padding: 20px;
+        }
+
+        #prawy{
+            background-color: cornflowerblue;
+            width: 50%;
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        img{
+            width: 80%;
+            max-width: 350px;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="naglowek"><h1>Restauracja</h1></header>
+
+    <div id="container">
+
+        <div id="lewy">
+            <form onchange="obliczCene()">
+                <h1>Menu</h1>
+                <h2>Zupy:</h2>
+                Gazpacho (20zł) <input type="checkbox" id="ga" value="20"><br>
+                Krem z warzyw (25zł) <input type="checkbox" id="kr" value="25"><br>
+                Gulaszowa ostra (30zł) <input type="checkbox" id="gu" value="30"><br>
+
+                <h2>Dania Główne:</h2>
+                Kaczka i owoc (30zł) <input type="checkbox" id="ka" value="30"><br>
+                Kurczak pieczony (40zł) <input type="checkbox" id="kur" value="40"><br>
+                Wieprzowy przysmak (35zł) <input type="checkbox" id="wie" value="35"><br>
+                Mintaj w panierce (30zł) <input type="checkbox" id="min" value="30"><br>
+                Alle kotlet (30zł) <input type="checkbox" id="all" value="30"><br>
+            </form>
+        </div>
+
+        <div id="prawy">
+            <img src="ramenobr.png" alt="ramen"><br>
+            <h3>Wartość zamówienia:</h3>
+            <div id="wyjscie">0</div>
+        </div>
+
+    </div>
+
+    <script>
+        function obliczCene(){
+            let wyjscie = document.getElementById("wyjscie");
+            let suma = 0;
+
+            let ids = ["ga","kr","gu","ka","kur","wie","min","all"];
+            ids.forEach(id => {
+                let el = document.getElementById(id);
+                if(el.checked) suma += parseInt(el.value);
+            });
+
+            wyjscie.innerHTML = suma + " zł";
+        }
+    </script>
+
+</body>
+</html>
