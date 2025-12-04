@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #naglowek{
+        text-align: center;
+        background-color: cornflowerblue;
+    }
+    #lewy{
+        background-color: gray;
+        float: left;
+        width: 50%;
+    }
+    #prawy{
+        text-align: center;
+        background-color: cornflowerblue;
+        float: left;
+        width: 50%;
+    }
+</style>
+<body>
+    <header id="naglowek"><h1>Restauracja</h1></header><br>
+    <script>
+        function obliczCene(){
+            let wyjscie = document.getElementById("wyjscie");
+            let gazpacho = document.getElementById("ga");
+            let krem = document.getElementById("kr");
+            let gulaszowa = document.getElementById("gu");
+
+            let kaczka = document.getElementById("ka");
+            let kurczak = document.getElementById("kur");
+            let wieprzowy = document.getElementById("wie");
+            let mintaj = document.getElementById("min");
+            let alle = document.getElementById("all");
+            let suma = 0;
+            
+            if(gazpacho.checked)
+            suma += parseInt(gazpacho.value);
+            if(krem.checked)
+            suma += parseInt(krem.value);
+            if(gulaszowa.checked)
+            suma += parseInt(gulaszowa.value);
+
+            if(kaczka.checked)
+            suma += parseInt(kaczka.value);
+            if(kurczak.checked)
+            suma += parseInt(kurczak.value);
+            if(wieprzowy.checked)
+            suma += parseInt(wieprzowy.value);
+            if(mintaj.checked)
+            suma += parseInt(mintaj.value);
+            if(alle.checked)
+            suma += parseInt(alle.value);
+
+            wyjscie.innerHTML = suma;
+        }
+    </script>
+</body>
+
+<div id="lewy">
+    <form onchange="obliczCene()">
+        <h1>Menu</h1>
+        <h2>Zupy:</h2>
+        Gazpacho (20zł) <input type="checkbox" id="ga" value="20"><br>
+        Krem z warzyw (25zł) <input type="checkbox" id="kr" value="25"><br>
+        Gulaszowa ostra (30zł) <input type="checkbox" id="gu" value="30"><br>
+
+        <h2>Dania Główne:</h2>
+        Kaczka i owoc (30zł) <input type="checkbox" id="ka" value="30"><br>
+        Kurczak pieczony (40zł) <input type="checkbox" id="kur" value="40"><br>
+        Wieprzowy przysmak (35zł) <input type="checkbox" id="wie" value="35"><br>
+        Mintaj w panierce (30zł) <input type="checkbox" id="min" value="30"><br>
+        Alle kotlet (30zł) <input type="checkbox" id="all" value="30"><br>
+    </form>
+</div>
+
+<div id="prawy">
+    <img src="ramenobr.png" alt="ramen"><br>
+    <h3>Wartość zamówienia: </h3><div id="wyjscie">0</div>
+</div>
+</html>
