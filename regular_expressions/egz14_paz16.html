@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header{
+            text-align: center;
+            background-color: dodgerblue;
+            color: blue;
+            margin: 0px;
+            height: 35px;
+        }
+
+        #lewo{
+            background-color: aquamarine;
+            float: left;
+            width: 20%;
+            height: 1000px;
+        }
+
+        #prawo{
+            text-align: center;
+            background-color: honeydew;
+            float: right;
+            width: 80%;
+            height: 1000px;
+        }
+    </style>
+</head>
+<body>
+    <header><h2>Sprawdź swoje hasło</h2></header>
+        <div id="lewo">
+            <h3>Wybierz</h3>
+            <div>
+            <h5>1. Sprawdz hasło<br>
+                2. Zasady tworzenia hasła
+            </h5>
+            </div>
+        </div>
+
+<div id="prawo">
+    <form>
+        <label><br>Twoje Hasło:<input type = "text" 
+                            placeholder = "wpisz hasło" 
+                            minlength = "1" 
+                            maxlength = "10"
+                            id = "haslo"
+        ></label>
+        <input type = "button" onclick = "sprawdz()" value="SPRAWDZ"><br><br>
+        <span id="sila">Siła hasła:</span>
+    </form>
+</div>
+
+<script>
+    function sprawdz(){
+        let haslo = document.getElementById("haslo").value;
+        let s = document.getElementById("sila");
+            const regex = /\d/;
+
+            if(regex.test(haslo) && haslo.length >=7){
+                s.innerHTML = "Dobre";
+            }else if(regex.test(haslo) && haslo.length >=4){
+                s.innerHTML = "Srednie";
+            }else if(haslo.length>0){
+                s.innerHTML = "Slaba";
+            }
+    }
+</script>
+</body>
+</html>
