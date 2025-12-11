@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sprawdz(){
+            let we = document.getElementById("haslo").value;
+            const regex = // regex - regular expressions
+            // kod pocztowy /^[0-9]{3}-[0-9]{2}$/;  
+            // kot i pies /^kop$|^pies$/;
+            // /^[7-9]$|^1[0-2]$/;
+            /^[A-z0-9.-]{1,}@[A-z0-9.-]{1,}$/
+
+            if(regex.test(we)){
+                alert("poprawne");
+            }else alert("niepoprawne");
+        }
+    </script>
+    <form>
+        <!-- 
+        ZAWSZE OCENIANE NA EGZAMINIE
+        sposób 1
+        <label>HASŁO:<input type="text"></label>
+
+        sposób 2
+        <label for = "zzz">Text</label>
+        <input type="text" id="zz">
+        -->
+
+        <label>HASŁO:<input type = "text" 
+                            placeholder = "wpisz hasło" 
+                            minlength = "1" 
+                            maxlength = "10"
+                            id = "haslo"
+        ></label><br>
+        <input type = "button" onclick = "sprawdz()" value="SPRAWDZ">
+    </form>
+</body>
+</html>
