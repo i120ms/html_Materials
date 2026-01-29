@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <img src="kamien1.PNG">
+        <img src="papier1.png">
+        <img src="nozyce1.PNG">
+    </div><br>
+    <button id="losuj"> Następna runda </button><br>
+    <img id="komputer"><br>
+
+    <div><p>Punkty: <scan id="punktyG"></scan>  :  <scan id="punktyK"></scan>  </p></div>
+
+    <script>
+        const obrazki = document.getElementsByTagName("img");
+        const obrazkiKomp = document.getElementById("komputer");
+        const przycisk = document.getElementById("losuj");
+
+    // wybór gracza
+        for(let i=0; i<obrazki.length; i++){
+            obrazki[i].onclick = function(){
+                for(let j=0; j<obrazki.length; j++){
+                    obrazki[j].style.outline = "";
+                }
+                this.style.outline = "5px solid green";
+            }
+        }
+
+    // losowanie komputera
+        przycisk.onclick = function(){
+            const obrazkiK = [
+                "kamien2.png",
+                "nozyce2.png",
+                "papier2.png"
+            ];
+
+            const los = Math.floor(Math.random()*obrazkiK.length);
+            obrazkiKomp.src = obrazkiK[los];
+        }
+
+    // wynik
+        const punktyG = document.getElementById("punktyG");
+        const punktyK = document.getElementById("punktyK");
+    </script>
+</body>
+
+</html>
