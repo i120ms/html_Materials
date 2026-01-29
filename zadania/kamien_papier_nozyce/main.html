@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        <img src="kamien1.PNG">
+        <img src="papier1.png">
+        <img src="nozyce1.PNG">
+    </div>
+    <br>
+    <button id="losuj">Następna runda</button>
+    <br>
+    <img id="komputer">
+    <br>
+    <div id="wynik">Gracz: 0 Komp: 0</div>
+    <script>
+        let obrazki = document.getElementsByTagName("img");
+        let obrazkomp = document.getElementById("komputer");
+        let przycisk = document.getElementById("losuj");
+
+        let obrazkikomp = [
+            "kamien2.png",
+            "papier2.png",
+            "nozyce2.png"
+        ];
+
+        let komp=0;
+        let gracz=0;
+        let wybor;
+
+        let wynik=document.getElementById("wynik")
+        for(let i =0;i<obrazki.length;i++){
+            obrazki[i].onclick= function() {
+                for(let j =0;j<obrazki.length;j++){
+                    obrazki[j].style.outline="";
+                }
+                this.style.outline="5px solid green"
+                wybor=i
+            }
+            
+        }
+        przycisk.onclick=function() {
+            let los= Math.floor(Math.random()*obrazkikomp.length);
+            obrazkomp.src=obrazkikomp[los]
+
+            if(wybor==0 && los==1)
+            komp++
+            if(wybor==1 && los==2)
+            komp++
+            if(wybor==2 && los==0)
+            komp++
+
+            if(wybor==2 && los==1)
+            gracz++
+
+            if(wybor==0 && los==2)
+            gracz++
+
+            if(wybor==1 && los==0)
+            gracz++
+
+            if(wybor==0 && los==0){
+            gracz++
+            komp++    
+            }
+            if(wybor==1 && los==1){
+            gracz++
+            komp++    
+            }
+            if(wybor==2 && los==2){
+            gracz++
+            komp++    
+            }
+
+            wynik.innerHTML = "Gracz: "+" "+ gracz +" "+" Komp: "+" "+ komp
+            if (gracz==10 && komp==10){
+                alert("REMIS")
+            }
+            if (gracz==10 || komp==10) {
+                if (komp>gracz) {
+                    alert("Wygrał komp")
+                }
+                else{
+                    alert("Wygrał gracz")
+                }
+            }
+        }
+    </script>
+</body>
+</html>
