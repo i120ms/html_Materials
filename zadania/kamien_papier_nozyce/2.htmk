@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>PKN – if()</title>
+</head>
+
+<body>
+    <img src="kamien1.PNG" onclick="wybierz(0)">
+    <img src="papier1.png" onclick="wybierz(1)">
+    <img src="nozyce1.PNG" onclick="wybierz(2)">
+    <br><br>
+
+    <button onclick="runda()">Następna runda</button>
+    <br><br>
+
+    <img id="komputer"><br><br>
+
+    <p id="wynik">Punkty: 0 : 0</p>
+
+    <script>
+        let gracz = -1;
+        let g = 0;
+        let k = 0;
+        let koniec = false;
+
+        const img = document.getElementsByTagName("img");
+        const komp = document.getElementById("komputer");
+        const wynik = document.getElementById("wynik");
+
+        function wybierz(x) {
+            if (koniec) return;
+
+            if (x === 0) {
+                img[0].style.outline = "5px solid green";
+                img[1].style.outline = "";
+                img[2].style.outline = "";
+            }
+
+            if (x === 1) {
+                img[0].style.outline = "";
+                img[1].style.outline = "5px solid green";
+                img[2].style.outline = "";
+            }
+
+            if (x === 2) {
+                img[0].style.outline = "";
+                img[1].style.outline = "";
+                img[2].style.outline = "5px solid green";
+            }
+
+            gracz = x;
+        }
+
+        function runda() {
+            if (koniec) return;
+            if (gracz === -1) return;
+
+            let los = Math.floor(Math.random() * 3);
+
+            if (los === 0) komp.src = "kamien2.png";
+            if (los === 1) komp.src = "papier2.png";
+            if (los === 2) komp.src = "nozyce2.png";
+
+            komp.style.outline = "5px solid red";
+
+            // REMIS
+            if (gracz === los) {
+                g++;
+                k++;
+            }
+
+            // WYGRANA GRACZA
+            if (gracz === 0 && los === 2) g++;
+            if (gracz === 1 && los === 0) g++;
+            if (gracz === 2 && los === 1) g++;
+
+            // WYGRANA KOMPUTERA
+            if (gracz === 2 && los === 0) k++;
+            if (gracz === 0 && los === 1) k++;
+            if (gracz === 1 && los === 2) k++;
+
+            wynik.innerText = "Punkty: " + g + " : " + k;
+
+            if (g >= 10 || k >= 10) {
+                koniec = true;
+                wynik.innerText += " — KONIEC GRY";
+            }
+        }
+    </script>
+</body>
+</html>
