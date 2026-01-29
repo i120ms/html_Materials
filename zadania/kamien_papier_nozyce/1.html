@@ -15,12 +15,17 @@
     <button id="losuj"> Następna runda </button><br>
     <img id="komputer"><br>
 
-    <div><p>Punkty: <scan id="punktyG"></scan>  :  <scan id="punktyK"></scan>  </p></div>
+    <p id="wynik"></p>
 
     <script>
         const obrazki = document.getElementsByTagName("img");
         const obrazkiKomp = document.getElementById("komputer");
         const przycisk = document.getElementById("losuj");
+
+        let wybor;
+        let los;
+        var wyn = 0;
+        var wyni = 0;
 
     // wybór gracza
         for(let i=0; i<obrazki.length; i++){
@@ -29,6 +34,7 @@
                     obrazki[j].style.outline = "";
                 }
                 this.style.outline = "5px solid green";
+                wybor = i;
             }
         }
 
@@ -42,11 +48,61 @@
 
             const los = Math.floor(Math.random()*obrazkiK.length);
             obrazkiKomp.src = obrazkiK[los];
+            console.log(wybor + " " + los);
+
+            switch(wybor){
+                case 0: 
+                    if(los == wybor){
+                        console.log("remisssss");
+                    }else
+                    if(los == 2){
+                        wyn++
+                    }else
+                    wyni++
+                    break;
+
+                case 1:
+                    if(los == wybor){
+                        console.log("remisssss");
+                    }else
+                    if(los == 0){
+                        wyn++
+                    }else
+                    wyni++
+                    break;
+
+                case 2:
+                    if(los == wybor){
+                        console.log("remisssss");
+                    }else
+                    if(los == 1){
+                        wyn++
+                    }else
+                    wyni++
+                    break;
+            }
+            console.log("punkty g"+ wyn);
+        console.log("punkty k" + wyni);
+
+        if(wyn == 10){
+            console.log("WYGRAL UŻYTKOWNIK!!!");
+            wyn = 0;
+            wyni = 0;
         }
 
-    // wynik
-        const punktyG = document.getElementById("punktyG");
-        const punktyK = document.getElementById("punktyK");
+        if(wyni == 10){
+            console.log("WYGRAL KOMPUTER!!!");
+            wyn = 0;
+            wyni = 0;
+        }
+
+        console.log("wybor gracza" + wybor + " " + "wybor komp"+ los);
+
+
+
+
+
+        }
     </script>
 </body>
 
