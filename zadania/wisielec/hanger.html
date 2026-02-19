@@ -38,22 +38,18 @@
         function klawiatura(){
             prawyd.innerHTML = "";
             for(let i = 0; i < literki.length; i++){
-                prawyd.innerHTML += "<input type = button value =" + literki[i] + " onclick=przycisk("+ i +")>";
-                // + przycisk(literki) + "'>";  
-                //" = dzialaj('"+ literki[i] +"')>";
+                prawyd.innerHTML += "<input type=button value =" + literki[i] + " onclick=przycisk("+ i +")>";
             }
         }
 
         function haslo(){
             for(i = 0; i < h.length; i++){
-                prawyu.innerHTML += "<input type = button id = p" + i + ">";
+                prawyu.innerHTML += "<input type=button id=p" + i + ">";
             }
         }
 
-        function przycisk(parametr){
-            let l = literki(parametr);
-            let p = document.getElementById("p" + parametr);
-            console.log(l);
+        function przycisk(l){
+            console.log(literki[i])
         }
     </script>
 
