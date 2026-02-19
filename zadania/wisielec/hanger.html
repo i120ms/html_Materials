@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #lewy{
+            height: 600px;
+            width: 33%;
+            border: 5px solid slateblue;
+        }
+
+        #prawyu{
+            height: 300px;
+            width: 66%;
+            border: 5px solid slateblue;
+            position: absolute;
+            top: 8px;
+            left: 34%;
+        }
+
+        #prawyd{
+            height: 295px;
+            width: 66%;
+            border: 5px solid slateblue;
+            position: absolute;
+            top: 313px;
+            left: 34%;
+        }
+    </style>
+
+    <script>
+        const literki = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+        const h = "HASLO";
+
+        function klawiatura(){
+            prawyd.innerHTML = "";
+            for(let i = 0; i < literki.length; i++){
+                prawyd.innerHTML += "<input type = button value =" + literki[i] + " onclick=przycisk("+ i +")>";
+                // + przycisk(literki) + "'>";  
+                //" = dzialaj('"+ literki[i] +"')>";
+            }
+        }
+
+        function haslo(){
+            for(i = 0; i < h.length; i++){
+                prawyu.innerHTML += "<input type = button id = p" + i + ">";
+            }
+        }
+
+        function przycisk(parametr){
+            let l = literki(parametr);
+            let p = document.getElementById("p" + parametr);
+            console.log(l);
+        }
+    </script>
+
+</head>
+<body onload="klawiatura();haslo();">
+    
+    <div id="lewy"></div>
+    <div id="prawyu"></div>
+    <div id="prawyd"></div>
+
+</body>
+</html>
