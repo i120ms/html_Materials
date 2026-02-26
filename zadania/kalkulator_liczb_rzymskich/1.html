@@ -36,10 +36,24 @@
             let tab = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
             let tab2 = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
             let x = document.getElementById("text").value;
+            let X = toUpperCase();
             let spn = document.getElementById("spn");
             spn.innerHTML = "";
+            wyn = 0;
+
+            for(let i = 0; i < X.length; i++){
+                let esz = tab2.indexOf(X.charAr(i));
+                let esz2 = tab2.indexOf(X.charAr(i+1));
+                if(esz < esz2 && esz2 >-1){
+                    wyn -= tab[esz]
+                }else{
+                    wyn += tab[esz]
+                }
+            }
+            spn.innerHTML = wyn;
+            
         }
-        
     </script>
 </body>
 </html>
+
