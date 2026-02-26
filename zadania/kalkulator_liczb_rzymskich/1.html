@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>
+</head>
+<body>
+    <H1>Kalkulator liczb rzymskich</H1>
+    <input type="text" name="text" id="text"><br>
+    <input type="radio" name="RAD1" id="rad1" onclick="f1()">&nbsp;&nbsp;
+    <input type="radio" name="RAD1" id="rad2" onclick="f2()"><br>
+    <span id="spn"></span>
+
+    <script>
+        function f1(){
+            let tab = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+            let tab2 = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+            let x = document.getElementById("text").value;
+            let spn = document.getElementById("spn");
+            spn.innerHTML = "";
+
+            while(x > 0){
+            for(let i = 0; i < tab.length; i++){
+                if(x >= tab[i]){
+                    spn.innerHTML += tab[i] + " ";
+                    x -= tab[i];
+                    i = 0;
+                }
+            }
+        }    
+        }
+
+        function f2(){
+            let tab = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+            let tab2 = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I'];
+            let x = document.getElementById("text").value;
+            let spn = document.getElementById("spn");
+            spn.innerHTML = "";
+        }
+        
+    </script>
+</body>
+</html>
