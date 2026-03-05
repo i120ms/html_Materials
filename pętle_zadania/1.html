@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>
+</head>
+<body>
+    <script>
+        /*
+    //script1:
+        let n = 5;
+        for(let i=0; i<n; i++){
+            //for(let j=0; j<n; j++)
+            for(let j=i; j<n; j++)
+            // if(i==0 || i==n-1 || j==0 || j==n-1)
+                document.write("■ ");
+            //else
+            //    document.write("_ ");
+                document.write("<br>");            
+        }
+        */
+
+    //script2:
+        let n = 5;
+        //układ d: 
+        wynik = " ";
+        let a = new Array(n);
+        for(let i=0; i<n; i++)
+        a[i] = new Array(n);
+
+        for(let i=0; i<n; i++)
+            for(let j=0; j<n; j++)
+            a[i][j] = 0;
+
+        for(let i=0; i<n; i++)
+            for(let j=0; j<n; j++)
+
+
+            //układ a: 
+            //if(i==0 || i==n-1 || j==0 || j==n-1)
+
+            //układ b,c:
+            //if(i==j)
+            //if(i+j==n-1)
+
+            //układ d:
+            /*if(
+                (i==0 || i==4) && (j%2==0) ||
+                (i==2 && (j==0 || j==4))
+            )*/
+            
+            //układ e:
+            //if(i%2==0 || i==n-1)
+
+            //układ f:
+            //if(j%2==0 || j==n-1)
+
+            //układ g:
+            //if(i==j || i+j==4)
+
+            //układ h:
+            /*if(i==2 && j==2){
+                a[i][j] = 2;
+            }else if(i==j || i+j==4)*/
+
+            //układ i:
+            //i%3
+            if(i==1 || j+n==0)
+            a[i][j] = 1;
+        for(let i=0; i<n; i++){
+            for(let j=0; j<n; j++)
+            document.write(a[i][j] + " ");
+            document.write("<br>");
+        }
+
+    
+        </script>
+</body>
+</html>
