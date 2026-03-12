@@ -1,0 +1,73 @@
+<script>
+/* Reguły gry według Conwaya
+        - Martwa komórka, która ma dokładnie 3 żywych sąsiadów, staje się żywa w następnej jednostce czasu (rodzi się)[1][2][3];
+        - Żywa komórka z 2 albo 3 żywymi sąsiadami pozostaje nadal żywa; przy innej liczbie sąsiadów umiera (z „samotności” albo „zatłoczenia”)[1][2][3].
+*/
+    
+    let n = 10;
+    let p  = new Array(n);
+    
+    for(let i = 0; i < n; i++)
+      p[i] = new Array(n);
+      
+    for(let i = 0; i < n; i++)
+      for(let j = 0; j < n; j++)
+         p[i][j] = 0;
+     
+     p[3][3] = 1;
+     p[4][4] = 1;
+     p[5][2] = 1;
+     p[5][3] = 1;
+     p[5][4] = 1; 
+     
+    function rysuj(){
+      let txt = "";
+      for(let i = 0; i < n; i++){
+         for(let j = 0; j < n; j++){
+            if(p[i][j] == 1)
+               txt += "■ ";
+            else
+               txt += "  ";
+        }       
+        txt +="<br>";
+     }
+        document.getElementById("plansza").innerHTML = txt;
+    }
+
+
+
+
+
+
+
+    let s  = new Array(n);
+
+    function suma(){
+        for(let j=0; j<n; j++){
+            let s = sasiedzi(i,j);
+            
+            if(a[i][j] == 1 && (s == 2 || s == 3))
+            b[i][j] = 1;
+            else if(a[i][j] == 0 && s == 3)
+            b[i][j] = 1;
+            else 
+            b[i][j] = 0;
+        }
+    }
+
+    suma();
+
+    
+    </script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{font-family: "Courier New";}
+        </style>
+    </head>
+    <body onload = 'rysuj()'>
+        <div id="plansza"></div>
+        <div id="planszasum"></div>
+    <body>
