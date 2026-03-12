@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Gra w Życie Conwaya</title>
+    <style>
+        body { text-align: center; background-color: #333; color: white; font-family: sans-serif; }
+        canvas { border: 1px solid #fff; background-color: #000; cursor: pointer; }
+        .controls { margin-top: 10px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; margin: 0 5px; }
+    </style>
+</head>
+<body>
+    <h1>Gra w Życie</h1>
+    <canvas id="gridCanvas"></canvas>
+    <div class="controls">
+        <button onclick="startSimulation()">Start</button>
+        <button onclick="stopSimulation()">Stop</button>
+        <button onclick="resetGrid()">Reset</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gridCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const resolution = 10; // Rozmiar komórki w pikselach
+        canvas.width = 800;
+        canvas.height = 600;
+
+        const COLS = canvas.width / resolution;
+        const ROWS = canvas.height / resolution;
+
+        let grid = buildGrid();
+        let isRunning = false;
+        let intervalId = null;
+
+        // Inicjalizacja siatki
+        function buildGrid() {
+            return new Array(COLS).fill(null)
+                .map(() => new Array(ROWS).fill(0)
+                .map(() => Math.floor(Math.random() * 2))); // Losowe życie na start
+        }
+
+        function drawGrid() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let col = 0; col < COLS; col++) {
+                for (let row = 0; row < ROWS; row++) {
+                    const cell = grid[col][row];
+                    ctx.beginPath();
+                    ctx.rect(col * resolution, row * resolution, resolution, resolution);
+                    ctx.fillStyle = cell ? '#0f0' : '#000'; // Zielony dla żywych
+                    ctx.fill();
+                    ctx.stroke();
+                }
+            }
+        }
+
+        // Logika gry (reguły Conwaya)
+        function nextGen() {
+            const nextGrid = grid.map(arr => [...arr]);
+
+            for (let col = 0; col < COLS; col++) {
+                for (let row = 0; row < ROWS; row++) {
+                    const cell = grid[col][row];
+                    let numNeighbors = 0;
+                    
+                    // Liczenie sąsiadów
+                    for (let i = -1; i < 2; i++) {
+                        for (let j = -1; j < 2; j++) {
+                            if (i === 0 && j === 0) continue;
+                            const x_cell = (col + i + COLS) % COLS;
+                            const y_cell = (row + j + ROWS) % ROWS;
+                            numNeighbors += grid[x_cell][y_cell];
+                        }
+                    }
+
+                    // Reguły
+                    if (cell === 1 && (numNeighbors < 2 || numNeighbors > 3)) {
+                        nextGrid[col][row] = 0; // Śmierć z osamotnienia/przeludnienia
+                    } else if (cell === 0 && numNeighbors === 3) {
+                        nextGrid[col][row] = 1; // Narodziny
+                    }
+                }
+            }
+            grid = nextGrid;
+        }
+
+        function update() {
+            nextGen();
+            drawGrid();
+        }
+
+        function startSimulation() {
+            if (!isRunning) {
+                isRunning = true;
+                intervalId = setInterval(update, 100);
+            }
+        }
+
+        function stopSimulation() {
+            isRunning = false;
+            clearInterval(intervalId);
+        }
+
+        function resetGrid() {
+            stopSimulation();
+            grid = buildGrid();
+            drawGrid();
+        }
+
+        // Interakcja - kliknięcie zmienia stan komórki
+        canvas.addEventListener('click', event => {
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            const col = Math.floor(x / resolution);
+            const row = Math.floor(y / resolution);
+            grid[col][row] = grid[col][row] ? 0 : 1;
+            drawGrid();
+        });
+
+        drawGrid(); // Pierwsze rysowanie
+    </script>
+</body>
+</html>
