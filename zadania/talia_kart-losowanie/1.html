@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Karty</title>
+</head>
+<body>
+
+<script>
+const suits = ["hearts", "diamonds", "clubs", "spades"];
+const values = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+
+function createDeck() {
+  const deck = [];
+  for (const suit of suits) {
+    for (const value of values) {
+      deck.push(`${value} ${suit}`);
+    }
+  }
+  return deck;
+}
+
+function shuffle(array) {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+const deck = shuffle(createDeck());
+for (let r = 0; r < 4; r++) {
+  document.write('<div style="margin-bottom:10px;font-family:monospace;">');
+
+  const cards = deck.slice(r * 13, (r + 1) * 13);
+
+  for (const card of cards) {
+    document.write(`<span style="display:inline-block;width:90px;">${card}</span>`);
+  }
+
+  document.write('</div>');
+}
+</script>
+
+</body>
+</html>
